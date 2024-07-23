@@ -22,6 +22,10 @@ def read_docx(file):
 
 def model_response(text,job, prompt=prompt):
     """Takes in resume and job description, returns model response."""
+    if not api_key:
+        st.error("OpenAI API key is not set. Please add it to environment variables")
+        return
+        
     client = OpenAI(api_key=api_key)
     model = "gpt-3.5-turbo" 
 
